@@ -1,13 +1,55 @@
+
 const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?hours=24&';
 
-const getData = async() =>{
-    let data = "tmpc"
-    let station = "VABB"
+function newChart(data){
+    const ctx = document.getElementById('myChart');
+    console.log(data);
+    new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: data[0],
+        datasets: [{
+        label: '# of Votes',
+        data: data[1],
+        borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
+        }
+        }
+    }
+    });
+}
+
+
+const getData = async(data,station) =>{
     url = `${base_url}data=${data}&station=${station}`
     try {
         const response = await fetch(url);
         const result = await response.text();
-        console.log(csvJSON(result));
+        let res = JSON.parse(csvJSON(result));
+        
+        
+        var label = []
+        for(i of res){
+            if(i["valid"] !== undefined){
+                label.push(i["valid"]);
+            }
+        }
+        
+        var data = []
+        for(i of res){
+            if(i["tmpc"] !== undefined){
+                data.push(i["tmpc"]);
+            }
+        }   
+        
+        newChart([label,data]);
+       
+
     } catch (error) {
         console.error(error);
     }
@@ -45,8 +87,23 @@ searchInput.onkeyup = function(){
 }
 
 function listclicked(list){
-    
+    let s = "";
+    for(let i of list.innerHTML){
+        if(i=="<"){
+            break
+        }
+        s += i
+    }
+    searchInput.value = s;
+
+
 }
+
+
+
+getData("tmpc","VABB")
+
+
 
 
 
