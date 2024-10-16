@@ -26,6 +26,8 @@
     display: inline;
     align-self: center;
     margin-right: 5px;
+    height: 30px;
+    width: 30px;
 }
 
 #search-bar{
