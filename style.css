@@ -31,7 +31,7 @@
 }
 
 #search-bar{
-    
+    min-width: 200px;
     background-color: rgb(240, 239, 239);
     position: relative;
     width: 60%;
@@ -160,7 +160,7 @@
     background-image: url(images/background.jpg);
     background-size: cover;
     color: white;
-    height: 100vh;
+    height: fit-content;
     align-self: center;
     align-items: center;
     display: flex;
@@ -185,14 +185,37 @@
     transition-duration: 0.2s;
 
 }
-.default-page button:hover{
-    border: 2px solid black;
-    color: black;
-    background-color: rgb(255, 255, 255,0.5);
-    
-    
-    
 
+.default-page button:hover{
+    background-color: rgb(0, 0, 0,0.4);
+}
+
+#default-page-stations{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left:10%;
+    margin-right:10%;
+    background-color: rgb(0,0,0,0.4);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+#station-list{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    font-weight: 100;
+}
+
+#station-list ul{
+    font-weight: 100;
+}
+
+#station-list li{
+    list-style: none;
+    text-align: left;
 }
 /*Main content */
 
@@ -200,4 +223,51 @@
     display: none;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+
+
+
+
+
+
+/* Footer */
+
+
+#footer-container{
+    color: white;
+    height: 120px;
+    background-color: #386bc0;
+}
+
+#footer-bar-1{
+    text-align: right;
+}
+
+#footer-bar-1 div{
+    margin-right: 20px;
+}
+
+#footer-bar-1 i{
+    margin: 20px 5px 10px 0px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+#footer-bar-2{
+    margin-left:50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 50;
+    text-align: left;
+}
+#footer-bar-2 p{
+    margin: 5px 0 5px 0;
+}
+
+#footer-bar-2 a{
+    font-weight: 700;
+    color:white;
+    text-decoration: none;
 }

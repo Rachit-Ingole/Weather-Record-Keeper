@@ -68,7 +68,6 @@ const searchInput = document.querySelector("#search-input");
 const suggestions = Object.keys(stationCodes);
 const suggestionBox = document.querySelector(".search-suggestions")
 
-
 searchInput.onkeyup = function(){
     let input = searchInput.value;
     if(input.length > 2){
@@ -106,8 +105,6 @@ function listclicked(list){
 
 
 
-getData("tmpc","VABB")
-
 const findStationButton = document.querySelector(".default-page button");
 
 
@@ -115,5 +112,23 @@ findStationButton.addEventListener("click",(e)=>{
     searchInput.focus()
 })
 
+const lists = [document.querySelector("#list-1"),document.querySelector("#list-2"),document.querySelector("#list-3"),document.querySelector("#list-4")]
 
+function addNamesToList(){
+    
+    let filler = "";
+    let n = 0;
+    let breakers = ["29","59","89","119"];
+    for(i in suggestions){
+        filler += "<li>" +suggestions[i]+ "</li>\n";
+        if(breakers.includes(i)){
+            lists[n].innerHTML = filler; 
+            n+=1
+            filler = "";
+        }
+    }
+}
+    
+
+addNamesToList();
 
