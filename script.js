@@ -41,9 +41,9 @@ const getData = async(data,station) =>{
         }
         
         var data = []
-        for(i of res){
-            if(i["tmpc"] !== undefined){
-                data.push(i["tmpc"]);
+        for(i in res){
+            if(res[i]["tmpc"] !== undefined){
+                data.push(res[i]["tmpc"]);
             }
         }   
         
