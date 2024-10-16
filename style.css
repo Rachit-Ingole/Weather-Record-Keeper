@@ -18,6 +18,14 @@
 
 #dashboard-text{
     font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+#dashboard-text img{
+    display: inline;
+    align-self: center;
+    margin-right: 5px;
 }
 
 #search-bar{
