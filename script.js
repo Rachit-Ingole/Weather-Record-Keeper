@@ -9,7 +9,7 @@ function newChart(data){
     data: {
         labels: data[0],
         datasets: [{
-        label: '# of Votes',
+        label: 'Temperature(°C)',
         data: data[1],
         borderWidth: 1
         }]
@@ -34,12 +34,17 @@ const getData = async(data,station) =>{
         
         
         var label = []
-        for(i of res){
-            if(i["valid"] !== undefined){
-                label.push(i["valid"]);
+        for(i in res){
+            if(i%2==0){
+                if(res[i]["valid"] !== undefined){
+                    label.push(res[i]["valid"]);
+                }
+            }else{
+                label.push("");
             }
         }
-        
+        label = label.map(row=>row.slice(-4))
+        console.log(label)
         var data = []
         for(i in res){
             if(res[i]["tmpc"] !== undefined){
@@ -103,7 +108,12 @@ function listclicked(list){
 
 getData("tmpc","VABB")
 
+const findStationButton = document.querySelector(".default-page button");
 
+
+findStationButton.addEventListener("click",(e)=>{
+    searchInput.focus()
+})
 
 
 

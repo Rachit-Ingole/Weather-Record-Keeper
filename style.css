@@ -4,7 +4,7 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.navbar{
+#navbar{
     font-weight: 100;
     font-size: 0.85rem;
     padding: 0 6px 0 6px;
@@ -26,17 +26,24 @@
     display: inline;
     align-self: center;
     margin-right: 5px;
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
 }
 
 #search-bar{
+    
     background-color: rgb(240, 239, 239);
     position: relative;
     width: 60%;
+    border: 2px solid transparent;
     display: flex;
     justify-content:space-between;
     align-items: center;
+}
+
+#search-bar:focus-within {
+    border: 2.5px solid goldenrod;
+    border-bottom-width: 3px;
 }
 
 #search-input-div{
@@ -59,21 +66,24 @@
     width:min-content;
     font-size: 1rem;
 }
+
 #search-input:focus{
     outline: none;
 }
+
 .search-suggestions{
     position: absolute;
-    width: 100%;
+    max-width: 100%;
     max-height: 150px;
     overflow-y:auto;
-    top: 101%;
+    top: 103%;
     left:-0.2px;
     right:0.2px;
     align-content: center;
     color: black;
     background-color: rgb(240, 239, 239);
 }
+
 .hidden{
     display: none;
 }
@@ -84,7 +94,6 @@
     text-align: center;
     list-style: none;
     font-weight: 520;
-    border: 1px solid transparent;
     padding: 3px 10px 3px 33px;
 }
 
@@ -121,4 +130,74 @@
 .border:hover{
     border: 1.5px solid white;
     border-radius: 5px;
+}
+/*navbar-2*/
+
+#navbar-2{
+    display: none;
+    height: 40px;
+    background-color: #6296f0;
+    align-items: center;
+    color:white
+}
+
+#selected-name{
+    display: flex;
+}
+
+#selected-name img{
+    margin-left: 10px;
+    margin-right: 3px;
+    height: 20px;
+    width: 25px;
+    border-radius: 3px;
+}
+
+/*Default Page*/
+
+
+.default-page{
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    color: white;
+    height: 100vh;
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.default-page h1{
+    margin-top: 80px;
+    font-size: 3rem;
+    font-weight: 400;
+}
+.default-page button{
+    color:white;
+    width: 125px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-weight: 500;
+    font-stretch: narrower;
+    background-color: transparent;
+    transition-duration: 0.2s;
+
+}
+.default-page button:hover{
+    border: 2px solid black;
+    color: black;
+    background-color: rgb(255, 255, 255,0.5);
+    
+    
+    
+
+}
+/*Main content */
+
+.main-content{
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
 }

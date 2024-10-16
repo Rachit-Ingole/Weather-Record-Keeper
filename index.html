@@ -11,7 +11,7 @@
 
   <body>
     <header>
-        <div class="navbar">
+        <div id="navbar">
             <div id="dashboard-text" class="border">
                 <img src="images/Earth.png">
                 <h3 style="display: inline;">Dashboard</h3>
@@ -33,13 +33,36 @@
                 <button id="mode-button"><i class="fa-solid fa-sun"></i></button>
             </div>
         </div>
+        
+
+
+        <div id="navbar-2">
+            <div id="selected-name">
+                <img src="images/in_flag.png">
+                <p></p>
+            </div>
+        </div>
     </header>     
 
 
-    <div>
+    <div class="default-page">
+        <h1>The Weather's Record Keeper</h1>
+        <br>
+        <p>Weather and climate database providing detailed weather data for hundreds<br>of weather stations in India. Take a look at yesterday's temperatures or<br> discover the weather decades ago.</p>
+        <br>
+        <button> <i class="fa-solid fa-magnifying-glass"></i> Find Stations     </button>
+        <br>
+        <p></p>
+    </div>
+
+    <div class="main-content">
         <canvas id="myChart"></canvas>
     </div>
 
+
+    <footer>
+
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="csvtojson.js"></script> 
     <script src="codes.js"></script>
