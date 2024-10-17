@@ -106,7 +106,7 @@ function listclicked(list){
 
 
 const findStationButton = document.querySelector(".default-page button");
-
+getData("tmpc","VABB")
 
 findStationButton.addEventListener("click",(e)=>{
     searchInput.focus()

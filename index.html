@@ -45,7 +45,7 @@
     </header>     
 
 
-    <div class="default-page">
+    <div class="default-page display-none">
         <h1>The Weather's Record Keeper</h1>
         <br>
         <p>Weather and climate database providing detailed weather data for over hundred<br>of weather stations in India. Take a look at yesterday's temperatures or<br> discover the weather decades ago.</p>
@@ -71,7 +71,11 @@
     </div>
 
     <div class="main-content">
-        <canvas id="myChart"></canvas>
+        <div id="temp-graph">
+            <div><h3>Temperature</h3></div>
+            
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 
 

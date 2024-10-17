@@ -217,17 +217,39 @@
     list-style: none;
     text-align: left;
 }
-/*Main content */
 
-.main-content{
+
+.display-none{
     display: none;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 
 
+/*Main content */
 
+.main-content{
+    display: flex;
+    justify-content: center;
+}
+
+#temp-graph{
+    padding: 0 10px 0 10px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:65%;
+    border-radius: 5px;
+    flex-direction: column;
+    height: 500px;
+    background-color: #eeecec;
+    backdrop-filter: blur(20px);
+}
+
+#temp-graph h3{
+    font-weight: 400;
+    
+}
 
 
 
