@@ -241,14 +241,15 @@
     width:65%;
     border-radius: 5px;
     flex-direction: column;
-    height: 500px;
+    height: 520px;
     background-color: #eeecec;
     backdrop-filter: blur(20px);
 }
 
 #temp-graph h3{
-    font-weight: 400;
-    
+    font-weight: 400;   
+    margin: 10px 0px 10px 10px;
+
 }
 
 
@@ -288,7 +289,7 @@
     margin: 5px 0 5px 0;
 }
 
-#footer-bar-2 a{
+#footer-container a{
     font-weight: 700;
     color:white;
     text-decoration: none;

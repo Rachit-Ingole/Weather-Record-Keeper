@@ -1,5 +1,5 @@
 
-const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?hours=24&';
+const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?hours=24&tz=Asia%2FKolkata&';
 
 function newChart(data){
     const ctx = document.getElementById('myChart');
@@ -37,18 +37,21 @@ const getData = async(data,station) =>{
         for(i in res){
             if(i%2==0){
                 if(res[i]["valid"] !== undefined){
-                    label.push(res[i]["valid"]);
+                    label.unshift(res[i]["valid"]);
                 }
             }else{
-                label.push("");
+                label.unshift("");
             }
         }
-        label = label.map(row=>row.slice(-4))
+        if(label[0] == ""){
+            label.shift();
+        }
+        label = label.map(row=>row.slice(-5))
         console.log(label)
         var data = []
         for(i in res){
             if(res[i]["tmpc"] !== undefined){
-                data.push(res[i]["tmpc"]);
+                data.unshift(res[i]["tmpc"]);
             }
         }   
         
