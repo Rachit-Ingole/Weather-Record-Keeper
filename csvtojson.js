@@ -13,3 +13,20 @@ function csvJSON(csv){
     }
     return JSON.stringify(result); 
   }
+
+
+const MONTHCODES = {"01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun", "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"};
+
+function timeConvert(data,req){
+    // example input 2024-01-01 21:00
+    //               0123456789     
+    //output 1 Jan 2024
+    let year = data.slice(2,4);
+    let day = data.slice(8,10);
+    if(day[0] == 0) day.slice(1);   
+    let month = MONTHCODES[data.slice(5,7)];
+    let time = data.slice(-5);
+    if(req == "time") return time;
+    else if (req == "months") return `${day} ${month} ${year}`;
+    else return `${time} - ${day} ${month} ${year}`;
+}

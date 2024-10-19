@@ -7,7 +7,6 @@ function newChart(data){
     new Chart(ctx, {
     type: 'line',
     data: {
-        labels: data[0],
         datasets: [{
         label: 'Temperature(°C)',
         data: data[1],
@@ -16,11 +15,32 @@ function newChart(data){
     },
     options: {
         scales: {
+        x: {
+            labels: data[3],
+            display: false,
+            ticks: {
+                maxTicksLimit: 10
+            },
+        },
+        x2: {
+            labels: data[0],
+            ticks: {
+                maxTicksLimit: 10
+            },
+        },
+        x3:{
+            labels : data[2],
+            ticks: {
+                maxTicksLimit: 10
+            },
+        },
+
         y: {
             beginAtZero: true
         }
         }
-    }
+    },
+
     });
 }
 
@@ -35,19 +55,15 @@ const getData = async(data,station) =>{
         
         var label = []
         for(i in res){
-            if(i%2==0){
-                if(res[i]["valid"] !== undefined){
-                    label.unshift(res[i]["valid"]);
-                }
-            }else{
-                label.unshift("");
+            if(res[i]["valid"] !== undefined){
+                label.unshift(res[i]["valid"]);
+            
             }
         }
-        if(label[0] == ""){
-            label.shift();
-        }
-        label = label.map(row=>row.slice(-5))
-        console.log(label)
+        timeData = label.map(row => timeConvert(row,"time"));
+        monthData = label.map(row => timeConvert(row,"months"));
+        timeStamp = label.map(row => timeConvert(row,"all data"));
+
         var data = []
         for(i in res){
             if(res[i]["tmpc"] !== undefined){
@@ -55,7 +71,10 @@ const getData = async(data,station) =>{
             }
         }   
         
-        newChart([label,data]);
+        console.dir(timeData);
+        console.dir(monthData);
+        console.dir(timeStamp);
+        newChart([timeData,data,monthData,timeStamp]);
        
 
     } catch (error) {
