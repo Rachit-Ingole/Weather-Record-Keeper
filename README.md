@@ -1,1 +1,15 @@
-#A website which shows Environmental Trends in big cities of India using chart.js and mesonet
+#Overview:-
+
+The Weather's Record Keeper
+
+Weather and climate database providing detailed weather data for over hundred of weather stations in India. Take a look at yesterday's temperatures or discover the weather decades ago.
+
+#License:-
+
+[License](LICENSE)
+
+#Credits:-
+
+[Font Awesome](https://fontawesome.com/) for icons and symbols
+
+[IEM Mesonet](https://mesonet.agron.iastate.edu/request/download.phtml?network=IN__ASOS#) for all the weather data
