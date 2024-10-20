@@ -20,7 +20,7 @@
             <div id="search-bar" class="border">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input style="width:100%" id="search-input" type="text" placeholder="Enter Location" autocomplete="off">
-                <div class="search-suggestions .hidden"></div>
+                <div class="search-suggestions display-none"></div>
 
             </div>
             <div class="border">
@@ -33,34 +33,32 @@
                 <button id="mode-button"><i class="fa-solid fa-sun"></i></button>
             </div>
         </div>
-        
-
-
+        </div>
+    </header>     
+    <div id="navbar-2-container" class="display-none">
         <div id="navbar-2">
             <div id="selected-name">
                 <img src="images/in_flag.png">
                 <p>Navi Mumbai</p>
             </div>
             <div class="navbar-2-compo" id="navbar-2-temperature">
-                <p>Temperature</p>
+                <a href="#temp-container"><p>Temperature</p></a>
             </div>
             <div class="navbar-2-compo" id="navbar-2-precipitation">
-                <p>Relative Humidity</p>
+            <a href="#relh-container"><p>Relative Humidity</p></a>
             </div>
             <div class="navbar-2-compo" id="navbar-2-windspeed">
-                <p>Wind Speed</p>
+                <a href="#sknt-container"><p>Wind Speed</p></a>
             </div>
             <div class="navbar-2-compo" id="navbar-2-visibility">
-                <p>Visibility</p>
+                <a href="#vsby-container"><p>Visibility</p></a>
             </div>
             <div class="navbar-2-compo" id="navbar-2-cloudheight">
-                <p>Cloud Height</p>
+                <a href="#skyl2-container"><p>Cloud Height</p></a>
             </div>
         </div>
-    </header>     
-
-
-    <div class="default-page display-none">
+    </div>
+    <div class="default-page">
         <h1>The Weather's Record Keeper</h1>
         <br>
         <p>Weather and climate database providing detailed weather data for over hundred<br>of weather stations in India. Take a look at yesterday's temperatures or<br> discover the weather decades ago.</p>
@@ -85,35 +83,37 @@
         <br>
     </div>
 
-    <div class="main-content">
-        <div class="graph-container">
-            <div><h3>Temperature</h3></div>
-            <hr>
-            <canvas id="tempChart"></canvas>
+    <div id="main-content-container" class="display-none">
+        <div class="main-content">
+            <div class="graph-container" id="temp-container">
+                <div><h3>Temperature</h3></div>
+                <hr>
+                <canvas id="tempChart"></canvas>
+            </div>
+            <div class="graph-container" id="relh-container">
+                <div><h3>Relative Humidity</h3></div>
+                <hr>
+                <canvas id="relhChart"></canvas>
+            </div>
+            <div class="graph-container" id="sknt-container">
+                <div><h3>Wind Speed</h3></div>
+                <hr>
+                <canvas id="skntChart"></canvas>
+            </div>
+            <div class="graph-container" id="vsby-container">
+                <div><h3>Visibility</h3></div>
+                <hr>
+                <canvas id="vsbyChart"></canvas>
+            </div>
+            <div class="graph-container" id="skyl2-container">
+                <div><h3>Cloud Height</h3></div>
+                <hr>
+                <canvas id="skyl2Chart"></canvas>
+            </div>
+            <br>
+            <br>
+            
         </div>
-        <div class="graph-container">
-            <div><h3>Relative Humidity</h3></div>
-            <hr>
-            <canvas id="relhChart"></canvas>
-        </div>
-        <div class="graph-container">
-            <div><h3>Wind Speed</h3></div>
-            <hr>
-            <canvas id="skntChart"></canvas>
-        </div>
-        <div class="graph-container">
-            <div><h3>Visibility</h3></div>
-            <hr>
-            <canvas id="vsbyChart"></canvas>
-        </div>
-        <div class="graph-container">
-            <div><h3>Cloud Height</h3></div>
-            <hr>
-            <canvas id="skyl2Chart"></canvas>
-        </div>
-        <br>
-        <br>
-        
     </div>
 
 

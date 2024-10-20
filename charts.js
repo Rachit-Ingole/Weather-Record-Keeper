@@ -2,7 +2,6 @@
 
 function tempChart(data){
     const ctx = document.getElementById('tempChart');
-    
     new Chart(ctx, {
     type: 'line',
     data: {
@@ -77,68 +76,6 @@ function tempChart(data){
     });
 }
 
-function feelChart(data){
-    const ctx = document.getElementById('feelChart');
-    
-    new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-        label: 'Head Index',
-        data: data[1].map(row => ((row-32)*5)/9),
-        borderWidth: 1.5,
-        pointRadius: 0,
-        }
-        ]
-
-    },
-    options: {
-        responsive:true,
-        scales: {
-        x: {
-            labels: data[3],
-            display: false,
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-        x2: {
-            labels: data[0],
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-        x3:{
-            labels : data[2],
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-
-        y: {
-            title:{
-                display:true,
-                text: "°C",
-            }
-        },
-        },
-        plugins: {
-
-            tooltip: {
-
-                mode: 'index',
-
-                intersect: false
-
-            },
-            legend:{
-                position:"bottom",
-            }
-        }
-    },
-
-    });
-}
 
 
 function relhChart(data){
@@ -152,6 +89,7 @@ function relhChart(data){
         data: data[1],
         borderWidth: 1.5,
         pointRadius: 0,
+        
         }
         ]
 
@@ -247,7 +185,7 @@ function skntChart(data){
         y: {
             title:{
                 display:true,
-                text: "%",
+                text: "Knots",
             }
         },
         },

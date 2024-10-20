@@ -56,14 +56,32 @@ const getData = async(data,station) =>{
 /* Suggestion System */
 const searchInput = document.querySelector("#search-input");
 const suggestions = Object.keys(stationCodes);
-const suggestionBox = document.querySelector(".search-suggestions")
-const navbarName = document.querySelector("#selected-name p")
+const suggestionBox = document.querySelector(".search-suggestions");
+const navbarName = document.querySelector("#selected-name p");
+const navbar2 = document.querySelector("#navbar-2-container");
+const maincontent = document.querySelector("#main-content-container");
+const defaultpage = document.querySelector(".default-page");
+
+function loadPage(s){
+    let code = stationCodes[s];
+    getData("tmpc",code);
+    getData("relh",code);
+    getData("sknt",code);
+    getData("vsby",code);
+    getData("skyl2",code);
+    defaultpage.classList.add("display-none");
+    maincontent.classList.remove("display-none");
+
+}
+
+
+
 
 searchInput.onkeyup = function (){
     let input = searchInput.value;
     if(input.length > 2){
 
-        suggestionBox.classList.remove("hidden");
+        suggestionBox.classList.remove("display-none");
         var res = suggestions.filter((a)=>{
             return a.toLowerCase().includes(input.toLowerCase())
         })
@@ -77,9 +95,10 @@ searchInput.onkeyup = function (){
         suggestionBox.innerHTML = "<ul>"+ filler +"</ul>";
     }
     else{
-        suggestionBox.classList.add("hidden")
+        suggestionBox.classList.add("display-none")
     }
 }
+
 
 function listclicked(list){
     let s = "";
@@ -89,27 +108,28 @@ function listclicked(list){
         }
         s += i
     }
+    
+    navbar2.classList.remove("display-none");
     navbarName.innerText = s;
     searchInput.value = "";
-    suggestionBox.classList.add("hidden");
-
+    suggestionBox.classList.add("display-none");
+    loadPage(s);
 }
 
 
-
 const findStationButton = document.querySelector(".default-page button");
-getData("tmpc","VABB");
-getData("relh","VABB");
-getData("sknt","VABB");
-getData("vsby","VABB");
-getData("skyl2","VABB");
+// getData("tmpc","VABB");
+// getData("relh","VABB");
+// getData("sknt","VABB");
+// getData("vsby","VABB");
+// getData("skyl2","VABB");
 
 findStationButton.addEventListener("click",(e)=>{
     searchInput.focus()
 })
 
-const lists = [document.querySelector("#list-1"),document.querySelector("#list-2"),document.querySelector("#list-3"),document.querySelector("#list-4")]
 
+const lists = [document.querySelector("#list-1"),document.querySelector("#list-2"),document.querySelector("#list-3"),document.querySelector("#list-4")]
 function addNamesToList(){
     
     let filler = "";
