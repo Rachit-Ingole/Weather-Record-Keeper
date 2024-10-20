@@ -1,50 +1,6 @@
 
 const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?hours=24&tz=Asia%2FKolkata&';
 
-function newChart(data){
-    const ctx = document.getElementById('myChart');
-    console.log(data);
-    new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-        label: 'Temperature(°C)',
-        data: data[1],
-        borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-        x: {
-            labels: data[3],
-            display: false,
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-        x2: {
-            labels: data[0],
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-        x3:{
-            labels : data[2],
-            ticks: {
-                maxTicksLimit: 10
-            },
-        },
-
-        y: {
-            beginAtZero: true
-        }
-        }
-    },
-
-    });
-}
-
-
 const getData = async(data,station) =>{
     url = `${base_url}data=${data}&station=${station}`
     try {
@@ -64,18 +20,30 @@ const getData = async(data,station) =>{
         monthData = label.map(row => timeConvert(row,"months"));
         timeStamp = label.map(row => timeConvert(row,"all data"));
 
-        var data = []
+        var dataSet = []
         for(i in res){
-            if(res[i]["tmpc"] !== undefined){
-                data.unshift(res[i]["tmpc"]);
+            if(res[i][data] !== undefined){
+                dataSet.unshift(res[i][data]);
             }
         }   
         
-        console.dir(timeData);
-        console.dir(monthData);
-        console.dir(timeStamp);
-        newChart([timeData,data,monthData,timeStamp]);
-       
+        if(data == "dwpc"){
+            return dataSet
+        }else if(data=="feel"){
+            return dataSet
+        }else if(data=="tmpc"){ 
+            let dewDataSet = await getData("dwpc",station);
+            let feelDataSet = await getData("feel",station);
+            tempChart([timeData,dataSet,monthData,timeStamp,dewDataSet,feelDataSet]);
+        }else if(data=="relh"){
+            relhChart([timeData,dataSet,monthData,timeStamp]);
+        }else if(data=="sknt"){
+            skntChart([timeData,dataSet,monthData,timeStamp]);
+        }else if(data=="vsby"){
+            vsbyChart([timeData,dataSet,monthData,timeStamp]);
+        }else if(data=="skyl2"){
+            skyl2Chart([timeData,dataSet,monthData,timeStamp]);
+        }
 
     } catch (error) {
         console.error(error);
@@ -89,8 +57,9 @@ const getData = async(data,station) =>{
 const searchInput = document.querySelector("#search-input");
 const suggestions = Object.keys(stationCodes);
 const suggestionBox = document.querySelector(".search-suggestions")
+const navbarName = document.querySelector("#selected-name p")
 
-searchInput.onkeyup = function(){
+searchInput.onkeyup = function (){
     let input = searchInput.value;
     if(input.length > 2){
 
@@ -120,15 +89,20 @@ function listclicked(list){
         }
         s += i
     }
-    searchInput.value = s;
-
+    navbarName.innerText = s;
+    searchInput.value = "";
+    suggestionBox.classList.add("hidden");
 
 }
 
 
 
 const findStationButton = document.querySelector(".default-page button");
-getData("tmpc","VABB")
+getData("tmpc","VABB");
+getData("relh","VABB");
+getData("sknt","VABB");
+getData("vsby","VABB");
+getData("skyl2","VABB");
 
 findStationButton.addEventListener("click",(e)=>{
     searchInput.focus()

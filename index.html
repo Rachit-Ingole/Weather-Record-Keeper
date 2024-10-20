@@ -39,7 +39,22 @@
         <div id="navbar-2">
             <div id="selected-name">
                 <img src="images/in_flag.png">
-                <p></p>
+                <p>Navi Mumbai</p>
+            </div>
+            <div class="navbar-2-compo" id="navbar-2-temperature">
+                <p>Temperature</p>
+            </div>
+            <div class="navbar-2-compo" id="navbar-2-precipitation">
+                <p>Relative Humidity</p>
+            </div>
+            <div class="navbar-2-compo" id="navbar-2-windspeed">
+                <p>Wind Speed</p>
+            </div>
+            <div class="navbar-2-compo" id="navbar-2-visibility">
+                <p>Visibility</p>
+            </div>
+            <div class="navbar-2-compo" id="navbar-2-cloudheight">
+                <p>Cloud Height</p>
             </div>
         </div>
     </header>     
@@ -71,11 +86,34 @@
     </div>
 
     <div class="main-content">
-        <div id="temp-graph">
+        <div class="graph-container">
             <div><h3>Temperature</h3></div>
             <hr>
-            <canvas id="myChart"></canvas>
+            <canvas id="tempChart"></canvas>
         </div>
+        <div class="graph-container">
+            <div><h3>Relative Humidity</h3></div>
+            <hr>
+            <canvas id="relhChart"></canvas>
+        </div>
+        <div class="graph-container">
+            <div><h3>Wind Speed</h3></div>
+            <hr>
+            <canvas id="skntChart"></canvas>
+        </div>
+        <div class="graph-container">
+            <div><h3>Visibility</h3></div>
+            <hr>
+            <canvas id="vsbyChart"></canvas>
+        </div>
+        <div class="graph-container">
+            <div><h3>Cloud Height</h3></div>
+            <hr>
+            <canvas id="skyl2Chart"></canvas>
+        </div>
+        <br>
+        <br>
+        
     </div>
 
 
@@ -96,8 +134,9 @@
         </div>
     </footer>
 
+    <script src="charts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="csvtojson.js"></script> 
+    <script src="convertFunctions.js"></script> 
     <script src="codes.js"></script>
     <script src="script.js"></script>
       

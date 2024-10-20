@@ -39,6 +39,8 @@
     display: flex;
     justify-content:space-between;
     align-items: center;
+    border: 2.5px solid transparent;
+    border-bottom-width: 3px;
 }
 
 #search-bar:focus-within {
@@ -134,25 +136,36 @@
 /*navbar-2*/
 
 #navbar-2{
-    display: none;
+    position: sticky;
+    display: flex;
+    align-content: center;
     height: 40px;
     background-color: #6296f0;
     align-items: center;
-    color:white
+    color:white;
+    
 }
 
 #selected-name{
     display: flex;
 }
 
+.navbar-2-compo{
+    margin-left: 30px;
+}
+
 #selected-name img{
     margin-left: 10px;
-    margin-right: 3px;
+    margin-right: 5px;
     height: 20px;
     width: 25px;
     border-radius: 3px;
 }
 
+.navbar-2-compo p{
+    font-weight: 100;
+    font-size: 0.85rem;
+}
 /*Default Page*/
 
 
@@ -229,12 +242,14 @@
 
 .main-content{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-#temp-graph{
+.graph-container {
     padding: 0 10px 0 10px;
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -246,7 +261,7 @@
     backdrop-filter: blur(20px);
 }
 
-#temp-graph h3{
+.main-content h3{
     font-weight: 400;   
     margin: 10px 0px 10px 10px;
 
