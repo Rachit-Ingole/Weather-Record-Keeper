@@ -30,3 +30,16 @@ function timeConvert(data,req){
     else if (req == "months") return `${day} ${month} ${year}`;
     else return `${time} - ${day} ${month} ${year}`;
 }
+
+
+function getDaysBetweenDates(date1, date2) {
+    // Convert both dates to milliseconds
+    const date1_ms = new Date(date1).getTime();
+    const date2_ms = new Date(date2).getTime();
+
+    // Calculate the difference in milliseconds
+    const difference_ms = Math.abs(date2_ms - date1_ms);
+
+    // Convert back to days and return
+    return Math.ceil(difference_ms / (1000 * 60 * 60 * 24));
+}

@@ -153,7 +153,7 @@ function skntChart(data){
     const ctx = document.getElementById('skntChart');
     
     skntChartCanvas = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         datasets: [{
         label: 'Wind Speed(knots)',
@@ -278,7 +278,7 @@ function vsbyChart(data){
 function skyl2Chart(data){
     const ctx = document.getElementById('skyl2Chart');
     skyl2ChartCanvas = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         datasets: [{
         label: 'Cloud Height(ft)',

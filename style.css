@@ -191,16 +191,29 @@
     margin-left: auto;
 }
 
-#from-to{
-    margin-right:10px;
+#to-container{
+    margin-left: 5px;
 }
 
-#from-to input{
+#arrow-container{
+    margin-top: 2px;
+    margin-left:5px;
+}
+
+#update-button-container{
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+#navbar-2 input{
     border-radius: 5px;
     border: none;
     margin-top: 1px;
     font-size: 0.7rem;
-    height: 15px;
+    height: 18px;
 }
 /*Default Page*/
 

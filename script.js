@@ -1,8 +1,40 @@
 
-const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?hours=24&tz=Asia%2FKolkata&missing=null&';
+const base_url = 'https://mesonet.agron.iastate.edu/cgi-bin/request/asos.py?tz=Asia%2FKolkata&missing=null&';
+
+
 
 const getData = async(data,station) =>{
+    let n = 1
     url = `${base_url}data=${data}&station=${station}`
+    if(start != "today"){
+        y1 = start.slice(0,4);
+        m1 = start.slice(5,7);
+        d1 = start.slice(8);
+        y2 = end.slice(0,4);
+        m2 = end.slice(5,7);
+        d2 = end.slice(8);        
+        url += `&year1=${y1}&month1=${m1}&day1=${d1}&year2=${y2}&month2=${m2}&day2=${d2}`
+
+        let days = getDaysBetweenDates(start,end)
+        if(days < 10) n = 2
+        else if(days<20) n=3
+        else if(days<40) n=6
+        else if(days<60) n=8
+        else if(days<100) n=12
+        else if(days < 150) n = 16
+        else if(days<200) n = 20
+        else if(days<300) n = 30
+        else n = 100
+        
+    }else{
+        url += `&hours=24`
+    }
+  
+
+
+
+
+
     try {
         const response = await fetch(url);
         const result = await response.text();
@@ -11,6 +43,9 @@ const getData = async(data,station) =>{
         
         var label = []
         for(i in res){
+            if(start != "today" && i%n != 0){
+                continue
+            }
             if(res[i]["valid"] !== undefined){
                 label.unshift(res[i]["valid"]);
             
@@ -22,6 +57,9 @@ const getData = async(data,station) =>{
 
         var dataSet = []
         for(i in res){
+            if(start != "today" && i%n != 0){
+                continue
+            }
             if(res[i][data] !== undefined){
                 dataSet.unshift(res[i][data]);
             }
@@ -54,14 +92,13 @@ const updateInfoBar = async (code) =>{
     infoBoxSC.innerText = code;
     datas = ["drct","alti"]
     for(z of datas){
-        url = `${base_url}data=${z}&station=${code}`
+        url = `${base_url}data=${z}&station=${code}&hours=24`
         try {
             const response = await fetch(url);
             const result = await response.text();
             let res = JSON.parse(csvJSON(result));
             
             let ans = `${res[res.length-2][z]}`;
-            console.log(ans);
             if(z=="drct"){
                 directions = {"0.00":"North","90.00":"West","180.00":"South","270.00":"East"};
                 if(Object.keys(directions).includes(ans)){
@@ -101,8 +138,13 @@ const defaultpage = document.querySelector(".default-page");
 const infoBoxSC = document.querySelector("#info-box-station-code");
 const infoBoxAlti = document.querySelector("#info-box-altitude");
 const infoBoxWD = document.querySelector("#info-box-wind-direction");
+const updateButton = document.querySelector("#update-button");
+const updateTodayButton = document.querySelector("#today-button");
+var start = "today";
+var end = "today";
+var code;
 
-function loadPage(s){
+function loadPage(){
     if(tempChartCanvas != null){
         tempChartCanvas.destroy();
         relhChartCanvas.destroy();
@@ -110,14 +152,14 @@ function loadPage(s){
         skyl2ChartCanvas.destroy();
         vsbyChartCanvas.destroy();
     }
-
-
-    let code = stationCodes[s];
-    getData("tmpc",code);
-    getData("relh",code);
-    getData("sknt",code);
-    getData("vsby",code);
-    getData("skyl2",code);
+    infoBoxAlti.innerText = "";
+    infoBoxWD.innerText = "";
+    infoBoxSC.innerText = "";
+    getData("tmpc",code,start,end);
+    getData("relh",code,start,end);
+    getData("sknt",code,start,end);
+    getData("vsby",code,start,end);
+    getData("skyl2",code,start,end);
     updateInfoBar(code);
     defaultpage.classList.add("display-none");
     maincontent.classList.remove("display-none");
@@ -130,6 +172,29 @@ homeButton.addEventListener('click',()=>{
     defaultpage.classList.remove("display-none");
 })
 
+updateTodayButton.addEventListener('click',()=>{
+    if(start != "today"){
+        start = "today";
+        end = "today";
+        updateCheckBox();
+        loadPage();
+    }
+})
+updateButton.addEventListener('click',()=>{
+    let left = fromDate.value;
+    let right = toDate.value;
+    if(left == right && left == getDate()){
+        if(start != "today"){
+        start = "today",end = "today";
+        loadPage();
+        }
+    }else{
+        if(start != left || end != right){
+            start=left,end=right;
+            loadPage();
+        }
+    }
+})
 
 searchInput.onkeyup = function (){
     let input = searchInput.value;
@@ -165,9 +230,10 @@ function listclicked(list){
     
     navbar2.classList.remove("display-none");
     navbarName.innerText = s;
+    code = stationCodes[s];
     searchInput.value = "";
     suggestionBox.classList.add("display-none");
-    loadPage(s);
+    loadPage();
 }
 
 
@@ -201,7 +267,8 @@ function addNamesToList(){
 addNamesToList();
 
 
-const fromTo = document.querySelector("#from-to");
+const fromContainer = document.querySelector("#from-container");
+const toContainer = document.querySelector("#to-container");
 
 function getDate(){
     let now = new Date();
@@ -217,8 +284,13 @@ function getDate(){
 }
 
 let todayDate = getDate();
-fromTo.innerHTML = `<input type="date" id="from" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input> - <input type="date" id="to" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input>`
+fromContainer.innerHTML = `<input type="date" id="from" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input>`
+toContainer.innerHTML = `<input type="date" id="to" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input>`
 const toDate = document.querySelector("#to");
 const fromDate = document.querySelector("#from");
 
-
+function updateCheckBox(){
+    let todayDate = getDate();
+    fromContainer.innerHTML = `<input type="date" id="from" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input>`
+    toContainer.innerHTML = `<input type="date" id="to" value="${todayDate}" min="1945-01-01" max="${todayDate}"></input>`
+}
