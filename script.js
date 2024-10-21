@@ -90,7 +90,7 @@ const getData = async(data,station) =>{
 
 const updateInfoBar = async (code) =>{
     infoBoxSC.innerText = code;
-    datas = ["drct","alti"]
+    datas = ["drct","alti","tmpc"]
     for(z of datas){
         url = `${base_url}data=${z}&station=${code}&hours=24`
         try {
@@ -115,6 +115,8 @@ const updateInfoBar = async (code) =>{
                 infoBoxWD.innerText = `${ans}`
             }else if(z=="alti"){
                 infoBoxAlti.innerText = `${ans} inches`
+            }else if(z=="tmpc"){
+                infoBoxCTemp.innerText = `${ans.slice(0,2)} °C`
             }
             
             
@@ -138,8 +140,10 @@ const defaultpage = document.querySelector(".default-page");
 const infoBoxSC = document.querySelector("#info-box-station-code");
 const infoBoxAlti = document.querySelector("#info-box-altitude");
 const infoBoxWD = document.querySelector("#info-box-wind-direction");
+const infoBoxCTemp = document.querySelector("#info-box-curr-temp");
 const updateButton = document.querySelector("#update-button");
 const updateTodayButton = document.querySelector("#today-button");
+
 var start = "today";
 var end = "today";
 var code;
