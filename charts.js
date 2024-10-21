@@ -1,8 +1,13 @@
-
+var tempChartCanvas = null;
+var relhChartCanvas = null;
+var skntChartCanvas = null;
+var vsbyChartCanvas = null;
+var skyl2ChartCanvas = null;
 
 function tempChart(data){
+
     const ctx = document.getElementById('tempChart');
-    new Chart(ctx, {
+    tempChartCanvas = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [
@@ -81,7 +86,7 @@ function tempChart(data){
 function relhChart(data){
     const ctx = document.getElementById('relhChart');
     
-    new Chart(ctx, {
+    relhChartCanvas = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
@@ -147,7 +152,7 @@ function relhChart(data){
 function skntChart(data){
     const ctx = document.getElementById('skntChart');
     
-    new Chart(ctx, {
+    skntChartCanvas = new Chart(ctx, {
     type: 'bar',
     data: {
         datasets: [{
@@ -210,7 +215,7 @@ function skntChart(data){
 function vsbyChart(data){
     const ctx = document.getElementById('vsbyChart');
     
-    new Chart(ctx, {
+    vsbyChartCanvas = new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
@@ -272,8 +277,7 @@ function vsbyChart(data){
 
 function skyl2Chart(data){
     const ctx = document.getElementById('skyl2Chart');
-    console.log(data);
-    new Chart(ctx, {
+    skyl2ChartCanvas = new Chart(ctx, {
     type: 'bar',
     data: {
         datasets: [{

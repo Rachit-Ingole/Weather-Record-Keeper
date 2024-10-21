@@ -118,12 +118,19 @@
 }
 
 #mode-button{
+    font-size: 1rem;
+}
+#navbar p{
+    cursor: pointer;
+}
+#navbar button{
     background-color: transparent;
     border: none;
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: white;
     cursor: pointer;
 }
+
 
 .border{
     border: 1.5px solid transparent;
@@ -172,12 +179,28 @@
 .navbar-2-compo p{
     font-weight: 100;
     font-size: 0.85rem;
+    cursor: pointer;
 }
 
 #navbar-2 a{
     color:white;
     text-decoration: none;
     
+}
+#navbar-2-time{
+    margin-left: auto;
+}
+
+#from-to{
+    margin-right:10px;
+}
+
+#from-to input{
+    border-radius: 5px;
+    border: none;
+    margin-top: 1px;
+    font-size: 0.7rem;
+    height: 15px;
 }
 /*Default Page*/
 
@@ -259,6 +282,34 @@
     align-items: center;
     justify-content: center;
 }
+#bar-container{
+    margin-top: 30px;
+    width: 68%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-box{
+    width: 30%;
+    background-color: #eeecec;
+    border-radius: 5px;
+    margin: 0 10px 0 10px;
+    padding: 20px 5px 20px 5px;
+    text-align: center;
+}
+
+.info-box h4{
+    font-weight: 400;
+    text-align: center;
+}
+
+.info-box h3{
+    margin-top: 8px;
+    text-align: center;
+    font-size:1rem;
+    font-weight: 400;
+}
 
 .graph-container {
     padding: 0 10px 0 10px;
@@ -274,7 +325,7 @@
     backdrop-filter: blur(20px);
 }
 
-.main-content h3{
+.graph-container h3{
     font-weight: 400;   
     margin: 10px 0px 10px 10px;
 
@@ -324,7 +375,7 @@
 }
 
 :target {
-    scroll-margin-top: 90px;
+    scroll-margin-top: 70px;
    }
 
 

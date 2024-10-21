@@ -12,7 +12,7 @@
   <body>
     <header>
         <div id="navbar">
-            <div id="dashboard-text" class="border">
+            <div id="dashboard-text">
                 <img src="images/Earth.png">
                 <h3 style="display: inline;">Dashboard</h3>
             </div>
@@ -24,7 +24,7 @@
 
             </div>
             <div class="border">
-                <p>Home</p>
+                <p id="home-button">Home</p>
             </div>
             <div class="border">
                 <p>Contact Us</p>
@@ -36,25 +36,35 @@
         </div>
     </header>     
     <div id="navbar-2-container" class="display-none">
+        
         <div id="navbar-2">
             <div id="selected-name">
                 <img src="images/in_flag.png">
                 <p>Navi Mumbai</p>
             </div>
-            <div class="navbar-2-compo" id="navbar-2-temperature">
+            <div class="navbar-2-compo border" id="navbar-2-temperature">
                 <a href="#temp-container"><p>Temperature</p></a>
             </div>
-            <div class="navbar-2-compo" id="navbar-2-precipitation">
+            <div class="navbar-2-compo border" id="navbar-2-precipitation">
             <a href="#relh-container"><p>Relative Humidity</p></a>
             </div>
-            <div class="navbar-2-compo" id="navbar-2-windspeed">
+            <div class="navbar-2-compo border" id="navbar-2-windspeed">
                 <a href="#sknt-container"><p>Wind Speed</p></a>
             </div>
-            <div class="navbar-2-compo" id="navbar-2-visibility">
+            <div class="navbar-2-compo border" id="navbar-2-visibility">
                 <a href="#vsby-container"><p>Visibility</p></a>
             </div>
-            <div class="navbar-2-compo" id="navbar-2-cloudheight">
+            <div class="navbar-2-compo border" id="navbar-2-cloudheight">
                 <a href="#skyl2-container"><p>Cloud Height</p></a>
+            </div>
+            <div class="navbar-2-compo border" id="navbar-2-time">
+                <p>Today</p>
+            </div>
+            <div class="navbar-2-compo border">
+                <p>Yesterday</p>
+            </div>
+            <div class="navbar-2-compo" id="from-to">
+
             </div>
         </div>
     </div>
@@ -85,6 +95,20 @@
 
     <div id="main-content-container" class="display-none">
         <div class="main-content">
+            <div id="bar-container">
+                <div id="altitude-box" class="info-box">
+                    <h4>Altimeter</h4>
+                    <h3 id="info-box-altitude"></h3>
+                </div>
+                <div class="info-box">
+                    <h4>Wind Direction</h4>
+                    <h3 id="info-box-wind-direction"></h3>
+                </div>
+                <div class="info-box">
+                    <h4>Station Code</h4>
+                    <h3 id="info-box-station-code"></h3>
+                </div>
+            </div>
             <div class="graph-container" id="temp-container">
                 <div><h3>Temperature</h3></div>
                 <hr>
@@ -122,14 +146,14 @@
             <div id="footer-bar-1">
                 <div>
                     <i class="fa-brands fa-linkedin"></i>
-                    <a href="https://www.instagram.com/rachiiit.ingole/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://github.com/Rachit-Ingole/EnvTrendsWebsite"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/rachiiit.ingole/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://github.com/Rachit-Ingole/EnvTrendsWebsite" target="_blank"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
             <div id="footer-bar-2">
                 <p>Copyright © Myself. Legal Disclosure & Privacy.</p>
-                <p>Weather data provided by <a href="https://mesonet.agron.iastate.edu/">Iowa Environmental Mesonet</a></p>
-                <p>Icons used from <a href="https://fontawesome.com/">Font Awesome</a></p>
+                <p>Weather data provided by <a href="https://mesonet.agron.iastate.edu/" target="_blank">Iowa Environmental Mesonet</a></p>
+                <p>Icons used from <a href="https://fontawesome.com/" target="_blank">Font Awesome</a></p>
             </div>
         </div>
     </footer>
