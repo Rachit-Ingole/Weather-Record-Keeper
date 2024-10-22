@@ -70,6 +70,8 @@ const getData = async(data,station) =>{
         }else if(data=="feel"){
             return dataSet
         }else if(data=="tmpc"){ 
+            let ans = `${res[res.length-2]["tmpc"]}`;
+            infoBoxCTemp.innerText = `${ans.slice(0,2)} °C`
             let dewDataSet = await getData("dwpc",station);
             let feelDataSet = await getData("feel",station);
             tempChart([timeData,dataSet,monthData,timeStamp,dewDataSet,feelDataSet]);
@@ -90,7 +92,7 @@ const getData = async(data,station) =>{
 
 const updateInfoBar = async (code) =>{
     infoBoxSC.innerText = code;
-    datas = ["drct","alti","tmpc"]
+    datas = ["drct","alti"]
     for(z of datas){
         url = `${base_url}data=${z}&station=${code}&hours=24`
         try {
@@ -99,7 +101,7 @@ const updateInfoBar = async (code) =>{
             let res = JSON.parse(csvJSON(result));
             
             let ans = `${res[res.length-2][z]}`;
-            if(z=="drct"){
+            if(z=="drct" && ans != null){
                 directions = {"0.00":"North","90.00":"West","180.00":"South","270.00":"East"};
                 if(Object.keys(directions).includes(ans)){
                     ans = directions[ans];
@@ -115,8 +117,6 @@ const updateInfoBar = async (code) =>{
                 infoBoxWD.innerText = `${ans}`
             }else if(z=="alti"){
                 infoBoxAlti.innerText = `${ans} inches`
-            }else if(z=="tmpc"){
-                infoBoxCTemp.innerText = `${ans.slice(0,2)} °C`
             }
             
             
@@ -199,6 +199,7 @@ updateButton.addEventListener('click',()=>{
         }
     }
 })
+
 
 searchInput.onkeyup = function (){
     let input = searchInput.value;
