@@ -314,6 +314,7 @@ function skyl2Chart(data){
 
         y: {
             max: 12000,
+            min: 2000,
             title:{
                 display:true,
                 text: "Feet",
