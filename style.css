@@ -108,6 +108,7 @@
     text-align: right;
     display: inline;
     background-color: #386bc0;
+    color:white;
     padding: 3px 3px 3px 3px;
     border-radius: 5px;
     width: 35px;
@@ -303,7 +304,7 @@
 
 .info-box{
     width: 30%;
-    background-color: #eeecec;
+    background-color: #eceeee;
     border-radius: 5px;
     margin: 0 10px 0 10px;
     padding: 20px 5px 20px 5px;
